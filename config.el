@@ -1,13 +1,9 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
-
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Lachlan Kermode"
+      user-mail-address "lachiekermode@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -26,13 +22,17 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
+(setq doom-font (font-spec :family "JuliaMono" :size 18))
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Dropbox/obsidian/org")
-(setq org-roam-directory "~/Dropbox/org-roam")
-; (setq org-roam-file-extensions '("org md"))
 
+
+(after! org
+        (setq org-log-done 'time) ;; add timestamps to DONE
+)
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
