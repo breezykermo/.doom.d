@@ -5,54 +5,38 @@
 (setq user-full-name "Lachlan Kermode"
       user-mail-address "lachiekermode@gmail.com")
 
-;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
-;; are the three important ones:
-;;
-;; + `doom-font'
-;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;;
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "sourcecodepro" :size 24)
-       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+;; FONTS, THEME et al
+(setq doom-font (font-spec :family "sourcecodepro" :size 20)
+       doom-variable-pitch-font (font-spec :family "sans" :size 20))
 (set-frame-parameter (selected-frame) 'alpha '(85 50))
 
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Dropbox/obsidian/org")
+(set-face-attribute 'default nil :height 120)
+(setq display-line-numbers-type t)
+
+;; ORG, ORG-ROAM and DEFT
+(setq PKB_DIR "~/Dropbox/obsidian")
+(setq ORG_EXTS '("org" "md"))
+(setq org-directory PKB_DIR)
+(setq org-roam-directory PKB_DIR)
+(setq org-roam-file-extensions ORG_EXTS)
+
+(use-package org-roam :ensure t)
+(use-package md-roam
+  :config
+  (setq org-roam-title-sources '((mdtitle title mdheadline headline) (mdalias alias)))
+  (setq md-roam-file-extension-single "md"))
 
 (after! org
         (setq org-log-done 'time) ;; add timestamps to DONE
 )
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
 
-(set-face-attribute 'default nil :height 120)
+(setq deft-extensions ORG_EXTS)
+(setq deft-directory PKB_DIR)
 
-;; Here are some additional functions/macros that could help you configure Doom:
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
-
-; (projectile-add-known-project "~/code/fa/timemap")
+;; KEY REBINDINGS to make more vim-link
+(map! "C-}"             #'next-buffer
+      "C-{"             #'previous-buffer
+      "C-o"             #'+neotree/open)
