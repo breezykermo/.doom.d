@@ -40,3 +40,5 @@
 (map! "C-}"             #'next-buffer
       "C-{"             #'previous-buffer
       "C-o"             #'+neotree/open)
+
+(add-to-list 'org-file-apps '("pdf" . "zathura %s"))
