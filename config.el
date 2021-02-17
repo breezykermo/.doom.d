@@ -6,8 +6,8 @@
       user-mail-address "lachiekermode@gmail.com")
 
 ;; FONTS, THEME et al
-(setq doom-font (font-spec :family "sourcecodepro" :size 20)
-       doom-variable-pitch-font (font-spec :family "sans" :size 20))
+(setq doom-font (font-spec :family "Fantasque Sans Mono" :size 20)
+       doom-variable-pitch-font (font-spec :family "Fantasque Sans Mono" :size 20))
 (set-frame-parameter (selected-frame) 'alpha '(85 50))
 
 (setq doom-theme 'doom-one)
