@@ -17,7 +17,7 @@
 (setq display-line-numbers-type t)
 
 ;; ORG, ORG-ROAM and DEFT
-(setq PKB_DIR "~/Dropbox/obsidian")
+(setq PKB_DIR "~/Dropbox (Brown)/obsidian")
 (setq ORG_EXTS '("org" "md"))
 (setq org-directory PKB_DIR)
 (setq org-roam-directory PKB_DIR)
