@@ -38,7 +38,7 @@
 
 ;; KEY REBINDINGS to make more vim-link
 (map! "C-}"             #'next-buffer
-      "C-{"             #'previous-buffer
+      "C-t"             #'previous-buffer
       "C-o"             #'+neotree/open)
 
 (add-to-list 'org-file-apps '("pdf" . "zathura %s"))
