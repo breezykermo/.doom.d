@@ -6,8 +6,8 @@
       user-mail-address "lachiekermode@gmail.com")
 
 ;; FONTS, THEME et al
-(setq doom-font (font-spec :family "Fantasque Sans Mono" :size 20)
-       doom-variable-pitch-font (font-spec :family "Fantasque Sans Mono" :size 20))
+(setq doom-font (font-spec :family "Julia Mono" :size 20)
+       doom-variable-pitch-font (font-spec :family "Julia Mono" :size 20))
 (set-frame-parameter (selected-frame) 'alpha '(85 50))
 
 (setq doom-theme 'doom-one)
@@ -16,18 +16,18 @@
 (set-face-attribute 'default nil :height 120)
 (setq display-line-numbers-type t)
 
-;; ORG, ORG-ROAM and DEFT
+;; ORG and DEFT
 (setq PKB_DIR "~/Dropbox (Brown)/obsidian")
 (setq ORG_EXTS '("org" "md"))
 (setq org-directory PKB_DIR)
-(setq org-roam-directory PKB_DIR)
-(setq org-roam-file-extensions ORG_EXTS)
+; (setq org-roam-directory PKB_DIR)
+; (setq org-roam-file-extensions ORG_EXTS)
 
-(use-package org-roam :ensure t)
-(use-package md-roam
-  :config
-  (setq org-roam-title-sources '((mdtitle title mdheadline headline) (mdalias alias)))
-  (setq md-roam-file-extension-single "md"))
+; (use-package org-roam :ensure t)
+; (use-package md-roam
+  ; :config
+  ; (setq org-roam-title-sources '((mdtitle title mdheadline headline) (mdalias alias)))
+  ; (setq md-roam-file-extension-single "md"))
 
 (after! org
         (setq org-log-done 'time) ;; add timestamps to DONE
@@ -41,4 +41,4 @@
       "C-t"             #'previous-buffer
       "C-o"             #'+neotree/open)
 
-(add-to-list 'org-file-apps '("pdf" . "zathura %s"))
+; (add-to-list 'org-file-apps '("pdf" . "zathura %s"))
