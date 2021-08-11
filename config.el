@@ -26,10 +26,25 @@
 (setq deft-extensions '("org" "md"))
 (setq deft-directory PKB_DIR)
 
-;; KEY REBINDINGS to make more vim-link
-(map! "C-}"             #'next-buffer
-      "C-t"             #'previous-buffer
-      "C-o"             #'+neotree/open)
+;; KEY REBINDINGS to make more vim-like
+; (map! "C-}"             #'next-buffer
+;       "C-t"             #'previous-buffer
+;       "C-o"             #'+neotree/open)
+
+(map! :desc "Vim-like window movement up"
+      "C-k"             #'evil-window-up)
+(map! :desc "Vim-like window movement down"
+      "C-j"             #'evil-window-down)
+(map! :desc "Vim-like window movement left"
+      "C-h"             #'evil-window-left)
+(map! :desc "Vim-like window movement right"
+      "C-l"             #'evil-window-right)
+(map! :leader
+      (:prefix ("w" . "window")
+      :desc "Tmux-like window split"
+      "c"               #'evil-window-split))
+
+
 
 ;; citations
 ;; following https://jonathanabennett.github.io/blog/2019/05/29/writing-academic-papers-with-org-mode/
