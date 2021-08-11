@@ -44,6 +44,9 @@
       :desc "Tmux-like window split"
       "c"               #'evil-window-split))
 
+(map! :leader
+      :desc "Faster access of agenda"
+      "a"               #'org-agenda-list)
 
 
 ;; citations
