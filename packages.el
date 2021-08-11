@@ -49,6 +49,9 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! md-roam
-  :recipe (:host github
-           :repo "nobiot/md-roam"))
+; (package! md-roam
+;   :recipe (:host github
+;            :repo "nobiot/md-roam"))
+
+(package! org-ref)
+(package! helm-bibtex)

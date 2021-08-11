@@ -18,22 +18,12 @@
 
 ;; ORG and DEFT
 (setq PKB_DIR "~/Dropbox (Brown)/obsidian")
-(setq ORG_EXTS '("org" "md"))
 (setq org-directory PKB_DIR)
-; (setq org-roam-directory PKB_DIR)
-; (setq org-roam-file-extensions ORG_EXTS)
-
-; (use-package org-roam :ensure t)
-; (use-package md-roam
-  ; :config
-  ; (setq org-roam-title-sources '((mdtitle title mdheadline headline) (mdalias alias)))
-  ; (setq md-roam-file-extension-single "md"))
-
 (after! org
         (setq org-log-done 'time) ;; add timestamps to DONE
 )
 
-(setq deft-extensions ORG_EXTS)
+(setq deft-extensions '("org" "md"))
 (setq deft-directory PKB_DIR)
 
 ;; KEY REBINDINGS to make more vim-link
@@ -41,4 +31,27 @@
       "C-t"             #'previous-buffer
       "C-o"             #'+neotree/open)
 
-; (add-to-list 'org-file-apps '("pdf" . "zathura %s"))
+;; citations
+;; following https://jonathanabennett.github.io/blog/2019/05/29/writing-academic-papers-with-org-mode/
+(use-package helm-bibtex
+    :custom
+    (helm-bibtex-bibliography '("~/Dropbox (Brown)/obsidian/references/master.bib"))
+    (reftex-default-bibliography '("~/Dropbox (Brown)/obsidian/references/master.bib"))
+    (bibtex-completion-pdf-field "file")
+    :hook (Tex . (lambda () (define-key Tex-mode-map "\C-ch" 'helm-bibtex))))
+
+(use-package org-ref
+    :custom
+    (org-ref-default-bibliography "~/Dropbox (Brown)/obsidian/references/master.bib"))
+
+(add-to-list 'org-latex-classes
+            '("apa6"
+                "\\documentclass{apa6}"
+                ("\\section{%s}" . "\\section*{%s}")
+                ("\\subsection{%s}" . "\\subsection*{%s}")
+                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+(setq org-latex-pdf-process
+'("latexmk -pdflatex='pdflatex -output-directory build -interaction nonstopmode' -pdf -bibtex -f %f"))
