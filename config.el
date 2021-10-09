@@ -72,4 +72,8 @@
                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 (setq org-latex-pdf-process
-'("latexmk -pdflatex='pdflatex -output-directory build -interaction nonstopmode' -pdf -bibtex -f %f"))
+'("latexmk -pdflatex='pdflatex -interaction nonstopmode' -pdf -bibtex -f %f"))
+
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "brave")
