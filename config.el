@@ -6,9 +6,9 @@
       user-mail-address "lachiekermode@gmail.com")
 
 ;; FONTS, THEME et al
-(setq doom-font (font-spec :family "Julia Mono" :size 20)
-       doom-variable-pitch-font (font-spec :family "Julia Mono" :size 20))
-(set-frame-parameter (selected-frame) 'alpha '(85 50))
+(setq doom-font (font-spec :family "Hack" :size 20)
+       doom-variable-pitch-font (font-spec :family "Hack" :size 20))
+(set-frame-parameter (selected-frame) 'alpha '(100 50))
 
 (setq doom-theme 'doom-one)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
@@ -29,7 +29,7 @@
 ;; KEY REBINDINGS to make more vim-like
 ; (map! "C-}"             #'next-buffer
 ;       "C-t"             #'previous-buffer
-;       "C-o"             #'+neotree/open)
+;       "C-o"             #'+neotree/open)plans
 
 (map! :desc "Vim-like window movement up"
       "C-k"             #'evil-window-up)
@@ -71,6 +71,7 @@
                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
+; (setq org-latex-pdf-process '("latexmk -shell-escape -bibtex -pdf %f"))
 (setq org-latex-pdf-process
 '("latexmk -pdflatex='pdflatex -interaction nonstopmode' -pdf -bibtex -f %f"))
 
