@@ -74,7 +74,8 @@
 ; (setq org-latex-pdf-process '("latexmk -shell-escape -bibtex -pdf %f"))
 (setq org-latex-pdf-process
 '("latexmk -pdflatex='pdflatex -interaction nonstopmode' -pdf -bibtex -f %f"))
-
+; (setq org-latex-pdf-process (list
+;    "latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -f  %f"))
 
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "brave")
+      browse-url-generic-program "firefox")
