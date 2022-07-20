@@ -17,7 +17,7 @@
 (setq display-line-numbers-type t)
 
 ;; ORG and DEFT
-(setq PKB_DIR "~/Dropbox (Brown)/obsidian")
+(setq PKB_DIR "~/Dropbox (Brown)/lyt")
 (setq org-directory PKB_DIR)
 (after! org
         (setq org-log-done 'time) ;; add timestamps to DONE
@@ -54,14 +54,14 @@
 ;; following https://jonathanabennett.github.io/blog/2019/05/29/writing-academic-papers-with-org-mode/
 (use-package helm-bibtex
     :custom
-    (helm-bibtex-bibliography '("~/Dropbox (Brown)/obsidian/references/master.bib"))
-    (reftex-default-bibliography '("~/Dropbox (Brown)/obsidian/references/master.bib"))
+    (helm-bibtex-bibliography '("~/Dropbox (Brown)/lyt/references/master.bib"))
+    (reftex-default-bibliography '("~/Dropbox (Brown)/lyt/references/master.bib"))
     (bibtex-completion-pdf-field "file")
     :hook (Tex . (lambda () (define-key Tex-mode-map "\C-ch" 'helm-bibtex))))
 
 (use-package org-ref
     :custom
-    (org-ref-default-bibliography "~/Dropbox (Brown)/obsidian/references/master.bib"))
+    (org-ref-default-bibliography "~/Dropbox (Brown)/lyt/references/master.bib"))
 
 (add-to-list 'org-latex-classes
             '("apa6"
