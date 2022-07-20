@@ -31,6 +31,9 @@
 ;       "C-t"             #'previous-buffer
 ;       "C-o"             #'+neotree/open)plans
 
+(map! "C-}"             #'next-buffer)
+(map! "C-t"             #'previous-buffer)
+
 (map! :desc "Vim-like window movement up"
       "C-k"             #'evil-window-up)
 (map! :desc "Vim-like window movement down"
@@ -43,11 +46,9 @@
       (:prefix ("w" . "window")
       :desc "Tmux-like window split"
       "c"               #'evil-window-split))
-
 (map! :leader
       :desc "Faster access of agenda"
       "a"               #'org-agenda-list)
-
 
 ;; citations
 ;; following https://jonathanabennett.github.io/blog/2019/05/29/writing-academic-papers-with-org-mode/
@@ -79,3 +80,6 @@
 
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "firefox")
+
+;; conversion from markdown to orgmode
+(use-package! org-pandoc-import :after org)
