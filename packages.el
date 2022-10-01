@@ -53,14 +53,32 @@
 ;            :repo "nobiot/md-roam"))
 
 (package! org-ref)
+
 (package! helm-bibtex)
+
 (package! gitconfig-mode
 	  :recipe (:host github :repo "magit/git-modes"
 			 :files ("gitconfig-mode.el")))
+
 (package! gitignore-mode
 	  :recipe (:host github :repo "magit/git-modes"
 			 :files ("gitignore-mode.el")))
+
 (package! org-pandoc-import
   :recipe (:host github
            :repo "tecosaur/org-pandoc-import"
            :files ("*.el" "filters" "preprocessors")))
+
+; (package! pdf-tools :recipe
+;           (:host github
+;                  :repo "dalanicolai/pdf-tools"
+;                  :branch "pdf-roll"
+;                  :files ("lisp/*.el"
+;                          "README"
+;                          ("build" "Makefile")
+;                          ("build" "server")
+;                          (:exclude "lisp/tablist.el" "lisp/tablist-filter.el"))))
+
+(package! image-roll :recipe
+          (:host github
+                 :repo "dalanicolai/image-roll.el"))

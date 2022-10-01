@@ -22,9 +22,8 @@
 (after! org
         (setq org-log-done 'time) ;; add timestamps to DONE
 )
-
-(setq deft-extensions '("org" "md"))
-(setq deft-directory PKB_DIR)
+;; (setq deft-extensions '("org" "md"))
+;; (setq deft-directory PKB_DIR)
 
 ;; KEY REBINDINGS to make more vim-like
 ; (map! "C-}"             #'next-buffer
@@ -71,12 +70,20 @@
                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+(add-to-list 'org-latex-classes
+            '("acmart"
+                "\\documentclass{acmart}"
+                ("\\section{%s}" . "\\section*{%s}")
+                ("\\subsection{%s}" . "\\subsection*{%s}")
+                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
 
 ; (setq org-latex-pdf-process '("latexmk -shell-escape -bibtex -pdf %f"))
 (setq org-latex-pdf-process
-'("latexmk -pdflatex='pdflatex -interaction nonstopmode' -pdf -bibtex -f %f"))
-; (setq org-latex-pdf-process (list
-;    "latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -f  %f"))
+'("latexmk -pdflatex='pdflatex -interaction nonstopmode' -shell-escape -pdf -bibtex -f %f"))
+(define-key org-mode-map (kbd "C-c ]") 'org-ref-insert-link)
 
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "firefox")
