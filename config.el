@@ -16,20 +16,20 @@
 (set-face-attribute 'default nil :height 120)
 (setq display-line-numbers-type t)
 
-;; ORG and DEFT
+;; ORG
 (setq PKB_DIR "~/Dropbox (Brown)/lyt")
 (setq org-directory PKB_DIR)
+(setq org-deadline-warning-days 3)
 (after! org
         (setq org-log-done 'time) ;; add timestamps to DONE
+        (setq org-default-notes-file "/home/lox/Dropbox (Brown)/lyt/org/notes.org")
 )
-;; (setq deft-extensions '("org" "md"))
-;; (setq deft-directory PKB_DIR)
 
-;; KEY REBINDINGS to make more vim-like
-; (map! "C-}"             #'next-buffer
-;       "C-t"             #'previous-buffer
-;       "C-o"             #'+neotree/open)plans
+(after! citar
+  (setq! citar-bibliography '("/home/lox/Dropbox (Brown)/lyt/references/master.bib")))
+(require 'calfw)
 
+;; REMAPS
 (map! "C-}"             #'next-buffer)
 (map! "C-t"             #'previous-buffer)
 
@@ -49,52 +49,8 @@
       :desc "Faster access of agenda"
       "a"               #'org-agenda-list)
 
-;; citations
-;; following https://jonathanabennett.github.io/blog/2019/05/29/writing-academic-papers-with-org-mode/
-(use-package helm-bibtex
-    :custom
-    (helm-bibtex-bibliography '("~/Dropbox (Brown)/lyt/references/master.bib"))
-    (reftex-default-bibliography '("~/Dropbox (Brown)/lyt/references/master.bib"))
-    (bibtex-completion-pdf-field "file")
-    :hook (Tex . (lambda () (define-key Tex-mode-map "\C-ch" 'helm-bibtex))))
-
-(use-package org-ref
-    :custom
-    (org-ref-default-bibliography "~/Dropbox (Brown)/lyt/references/master.bib"))
-
-(add-to-list 'org-latex-classes
-            '("apa6"
-                "\\documentclass{apa6}"
-                ("\\section{%s}" . "\\section*{%s}")
-                ("\\subsection{%s}" . "\\subsection*{%s}")
-                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-(add-to-list 'org-latex-classes
-            '("acmart"
-                "\\documentclass{acmart}"
-                ("\\section{%s}" . "\\section*{%s}")
-                ("\\subsection{%s}" . "\\subsection*{%s}")
-                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-
-
-; (setq org-latex-pdf-process '("latexmk -shell-escape -bibtex -pdf %f"))
-(setq org-latex-pdf-process
-'("latexmk -pdflatex='pdflatex -interaction nonstopmode' -shell-escape -pdf -bibtex -f %f"))
-(define-key org-mode-map (kbd "C-c ]") 'org-ref-insert-link)
-
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "firefox")
-
-;; conversion from markdown to orgmode
-(use-package! org-pandoc-import :after org)
-
-;; org-reveal
-; (after! org
-;   (load-library "ox-reveal"))
-
 
 ; ATTEMPT TO HAVE MULTI TABLE FORMULAS
 ; https://emacs.stackexchange.com/questions/42604/org-table-spreadsheet-recalculate-all-tblfm-lines

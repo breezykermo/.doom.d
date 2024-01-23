@@ -52,10 +52,6 @@
 ;   :recipe (:host github
 ;            :repo "nobiot/md-roam"))
 
-(package! org-ref)
-
-(package! helm-bibtex)
-
 (package! gitconfig-mode
 	  :recipe (:host github :repo "magit/git-modes"
 			 :files ("gitconfig-mode.el")))
@@ -73,6 +69,9 @@
           (:host github
                  :repo "dalanicolai/image-roll.el"))
 
+(package! calfw :recipe
+          (:host github
+                 :repo "haji-ali/emacs-calfw"))
 ; (package! org-reveal)
 ; (package! ox-reveal)
 
